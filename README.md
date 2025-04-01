@@ -1,70 +1,146 @@
-# Getting Started with Create React App
+# Health Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple **Health Management System** that includes a backend API built with **PHP** and a frontend built using **React.js**. The application allows users to perform CRUD (Create, Read, Update, Delete) operations on user data, including fields like **name**, **email**, **password**, and **date of birth (DOB)**.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Technologies Used](#technologies-used)
+- [Setup Instructions](#setup-instructions)
+- [Backend Setup](#backend-setup)
+- [Frontend Setup](#frontend-setup)
+- [Testing the API](#testing-the-api)
+- [Version Control](#version-control)
+- [License](#license)
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React.js, HTML, CSS, JavaScript
+- **Backend**: PHP (RESTful API), MySQL (Database)
+- **Database**: MySQL (health_db)
+- **Version Control**: Git, GitHub
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Setup Instructions
 
-### `npm test`
+Follow these steps to set up the project on your local machine:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- **XAMPP** (for PHP and MySQL)
+- **Node.js** (for React development)
+- **npm** (Node Package Manager)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Clone the Repository
+First, clone the repository to your local machine:
+```sh
+git clone https://github.com/your-username/health-management.git
+cd health-management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Backend Setup
+The backend consists of a PHP RESTful API that connects to a MySQL database.
 
-### `npm run eject`
+1. Start XAMPP
+Make sure you have XAMPP installed. Open XAMPP Control Panel and start:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Apache (for PHP)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+MySQL (for Database)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+2. Create the Database
+In phpMyAdmin, create a new database:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Database Name: health_db
 
-## Learn More
+Create the table users with the following columns:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+id (INT, Primary Key, Auto Increment)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+name (VARCHAR)
 
-### Code Splitting
+email (VARCHAR)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+password (VARCHAR)
 
-### Analyzing the Bundle Size
+dob (DATE)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+3. Configure Database Connection
+Ensure that db.php in the backend folder is configured to connect to your MySQL database:
 
-### Making a Progressive Web App
+php
+Copy
+Edit
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "health_db";
+4. Start the PHP API
+The api.php file is where the API is defined. You can test it by visiting http://localhost/health_management/api.php in your browser or Postman.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Frontend Setup
+The frontend is a React.js application.
 
-### Advanced Configuration
+1. Install Dependencies
+Go to the frontend directory and install required dependencies using npm:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+sh
+Copy
+Edit
+cd frontend
+npm install
+2. Run the React App
+After installing the dependencies, start the React development server:
 
-### Deployment
+sh
+Copy
+Edit
+npm start
+This will run the React app on http://localhost:3000.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Testing the API
+You can test the API with Postman or a browser:
 
-### `npm run build` fails to minify
+GET: Fetch all users (GET request to http://localhost/health_management/api.php)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+POST: Add a new user (POST request with JSON body to http://localhost/health_management/api.php)
+
+PUT: Update a user (PUT request with JSON body to http://localhost/health_management/api.php)
+
+DELETE: Remove a user (DELETE request with JSON body to http://localhost/health_management/api.php)
+
+Example POST request body:
+json
+Copy
+Edit
+{
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "password": "securepassword",
+    "dob": "1995-05-12"
+}
+Version Control
+Throughout the development of this project, Git was used for version control. The project is hosted on GitHub, and commits, branches, and pull requests are used for proper collaboration and version tracking.
+
+Common Git Commands
+Clone the repository:
+git clone https://github.com/your-username/health-management.git
+
+Create a branch:
+git checkout -b new-feature-branch
+
+Commit changes:
+git commit -m "Added new feature"
+
+Push changes to GitHub:
+git push origin new-feature-branch
+
+License
+This project is open-source and available under the MIT License.
+
+Additional Information
+For further information on React, PHP, or MySQL, refer to the official documentation:
+
+React Documentation
+
+PHP Documentation
+
+MySQL Documentation
